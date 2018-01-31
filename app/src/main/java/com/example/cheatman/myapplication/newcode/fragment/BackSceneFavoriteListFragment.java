@@ -14,11 +14,14 @@ import com.example.cheatman.myapplication.newcode.database.dao.FavoriteAutomatio
 import com.example.cheatman.myapplication.newcode.database.dao.FavoriteSceneDao;
 import com.example.cheatman.myapplication.newcode.database.entity.FavoriteAutomationEntity;
 import com.example.cheatman.myapplication.newcode.database.entity.FavoriteSceneEntity;
+import com.example.cheatman.myapplication.newcode.model.AutomationInfo;
 import com.example.cheatman.myapplication.newcode.model.MyProjectInfo;
 import com.example.cheatman.myapplication.newcode.model.SceneInfo;
 import com.example.cheatman.myapplication.newcode.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,6 +50,16 @@ public class BackSceneFavoriteListFragment extends BaseFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         // 取外来数据源
         mSceneList = MyProjectInfo.getInstance().getSceneList();
+        // 数据源排序
+        Collections.sort(mSceneList,new Comparator<SceneInfo>(){
+            public int compare(SceneInfo arg0, SceneInfo arg1) {
+                if(arg0.isFavorite() == arg1.isFavorite())
+                    return arg0.getName().compareTo(arg1.getName());
+                else
+                    return Boolean.compare(arg1.isFavorite(),arg0.isFavorite());
+            }
+        });
+
 
         mRvScene.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mSceneFavoriteListAdapter = new SceneFavoriteListAdapter(mActivity,mSceneList);

@@ -20,6 +20,8 @@ import com.example.cheatman.myapplication.newcode.model.SceneInfo;
 import com.example.cheatman.myapplication.newcode.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -48,6 +50,16 @@ public class BackAutomationFavoriteListFragment extends BaseFragment {
 
         // 取外来数据源
         mAutomationList = MyProjectInfo.getInstance().getAutomationList();
+
+        // 数据源排序
+        Collections.sort(mAutomationList,new Comparator<AutomationInfo>(){
+            public int compare(AutomationInfo arg0, AutomationInfo arg1) {
+                if(arg0.isFavorite() == arg1.isFavorite())
+                   return arg0.getName().compareTo(arg1.getName());
+                else
+                    return Boolean.compare(arg1.isFavorite(),arg0.isFavorite());
+            }
+        });
 
         mRvAutomation.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         mAutomationFavoriteListAdapter = new AutomationFavoriteListAdapter(mActivity,mAutomationList);
