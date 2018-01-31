@@ -46,7 +46,6 @@ public class MainScheduleFragment extends BaseFragment {
     private DeviceDetail2Adapter mAdapter;
     private DeviceTypeAdapter mAdapterDeviceType;
 
-
     public static MainScheduleFragment newInstance() {
         MainScheduleFragment fragment = new MainScheduleFragment();
         return fragment;
