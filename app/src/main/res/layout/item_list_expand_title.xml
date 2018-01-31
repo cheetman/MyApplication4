@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/lightgrey"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
+
+        <TextView
+            android:text="Light"
+            android:id="@+id/tv_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="26sp" />
+
+        <ToggleButton
+            android:id="@+id/tb_item_title_button"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/selector_section_toggle_expand"
+            android:backgroundTint="@color/white"
+            android:textOn=""
+            android:textOff=""/>
+
+    </RelativeLayout>
+
+
+
+    <View
+        style="@style/h_line_white"
+        android:layout_height="1px"/>
+</LinearLayout>

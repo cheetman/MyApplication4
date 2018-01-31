@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Sychip App</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <!--标题(Toolbar)-->
+    <string name="title_home">Home</string>
+    <string name="title_main_schedule">Main Schedule</string>
+    <string name="title_scene">Scene</string>
+    <string name="title_automation">Automation</string>
+
+    <!--设置菜单-->
+    <string name="setting">Setting</string>
+    <string name="setting_back">&#060;Back</string>
+    <string name="setting_manage">Manage&#062;</string>
+    <string name="setting_update">Update&#062;</string>
+    <string name="setting_update_password">Update Password&#062;</string>
+    <string name="setting_ezviz_login">EZVIZ Login&#062;</string>
+    <string name="setting_symbol_left">&#060;</string>
+    <string name="setting_symbol_right">&#062;</string>
+    <string name="setting_logout">Logout</string>
+
+    <string name="setting_network">Network</string>
+    <string name="setting_rooms">Rooms</string>
+    <string name="setting_devices">Device</string>
+    <string name="setting_scene">Scene</string>
+    <string name="setting_automation">Automation</string>
+    <string name="setting_users">Users</string>
+    <string name="setting_gateway">Gateway Firmware</string>
+    <string name="setting_ezviz">EZVIZ</string>
+
+    <!--rpc 提示信息-->
+    <string name="message_rpc_2_15">System error</string>
+    <string name="message_rpc_102">User exist[code:102]</string>
+    <string name="message_rpc_103">User not exist[code:103]</string>
+    <string name="message_rpc_104">Password error[code:104]</string>
+    <string name="message_rpc_105">User name or password error[code:105]</string>
+    <string name="message_rpc_106">Too many client[code:106]</string>
+    <string name="message_rpc_107">Installer online[code:107]</string>
+    <string name="message_rpc_108">Admin online[code:108]</string>
+    <string name="message_rpc_110">Installer or admin Exclusive online[code:110]</string>
+    <string name="message_rpc_112">Illegal user name[code:112]</string>
+    <string name="message_rpc_113">To many general user[code:113]</string>
+    <string name="message_rpc_114">User already login[code:114]</string>
+    <string name="message_rpc_1013">Operation error when schTask not set status[code:1013]</string>
+    <string name="message_rpc_1601">Invalid device Id[code:1601]</string>
+    <string name="message_rpc_1602">Response timeout[code:1602]</string>
+    <string name="message_rpc_1603">Device not available[code:1603]</string>
+    <string name="message_rpc_1604">Device node insufficient space[code:1604]</string>
+    <string name="message_rpc_1605">ULTI ZigBee error[code:1605]</string>
+    <string name="message_rpc_1606">Server busy[code:1606]</string>
+    <string name="message_rpc_1607">ZB485 device ZigBee error[code:1607]</string>
+    <string name="message_rpc_1608">ZB485 device 485 error[code:1608]</string>
+    <string name="message_rpc_1609">ZB485 device configuration error[code:1609]</string>
+    <string name="message_rpc_1610">ZB485 device MCU error[code:1610]</string>
+    <string name="message_rpc_1611">ZB485 response parse error[code:1611]</string>
+    <string name="message_rpc_1612">Floor heating onoff fail[code:1612]</string>
+    <string name="message_rpc_1613">Floor heating set temperature fail[code:1613]</string>
+    <string name="message_rpc_1614">AC control fail[code:1614]</string>
+
+    <string name="message_rpc_disconnected">Disconnected, please login again. </string>
+    <string name="message_rpc_connectFail">Gateway is unreachable!</string>
+    <string name="message_rpc_manyClient">Too many mobile app connections! Please try again later! </string>
+    <string name="message_rpc_passwordError">Wrong password! </string>
+    <string name="message_rpc_whiteListChanged">You are blocked due to white list change.</string>
+    <string name="message_rpc_operationFailure">Operation failed.</string>
+    <string name="message_rpc_serverBusy">System is busy, please try again later!</string>
+    <string name="message_rpc_gatewayError">Gateway error! </string>
+    <string name="message_rpc_deviceBlocked">You are blocked by gateway, please check white list.</string>
+    <string name="message_rpc_projectfileNotExist">Gateway is not configured!</string>
+    <string name="message_rpc_passwordChanged">Password has changed, please login again!</string>
+    <string name="message_rpc_scheduleEmpty">Scheduler is not configured on gateway webpage!</string>
+    <string name="message_rpc_error_scheduler_parse">Scheduler is not configured correctly, please reconfigure it.</string>
+    <string name="message_rpc_socNotReady">System busy, please try again later!</string>
+    <string name="message_rpc_systemError">System error!</string>
+
+
+
+</resources>

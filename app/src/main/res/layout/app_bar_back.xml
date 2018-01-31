@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cheatman.myapplication.BackActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.example.cheatman.myapplication.newcode.control.BackToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:fitsSystemWindows="true"
+            android:id="@+id/toolbar"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <TextView
+                android:id="@+id/tv_main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:text="Back View"
+                android:textSize="@dimen/toolbar_title_text_size"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/iv_main_title_right"
+                android:layout_width="@dimen/toolbar_button_width"
+                android:layout_height="@dimen/toolbar_button_height"
+                android:layout_gravity="left"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:src="@drawable/ic_toolbar_arrow_back_black"
+                android:tint="@color/white"
+                style="@style/Widget.AppCompat.ActionButton.CloseMode"
+                />
+
+        </com.example.cheatman.myapplication.newcode.control.BackToolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_back" />
+
+</android.support.design.widget.CoordinatorLayout>

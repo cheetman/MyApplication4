@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">智能家居App</string>
+
+    <string name="action_settings">设置</string>
+
+    <!--标题(Toolbar)-->
+    <string name="title_home">首页</string>
+    <string name="title_main_schedule">主日程</string>
+    <string name="title_scene">场景</string>
+    <string name="title_automation">自动化</string>
+
+    <!--设置菜单-->
+    <string name="setting">设置</string>
+    <string name="setting_back">&#060;返回</string>
+    <string name="setting_manage">设置&#062;</string>
+    <string name="setting_update">更新&#062;</string>
+    <string name="setting_update_password">修改密码&#062;</string>
+    <string name="setting_ezviz_login">萤石云登录&#062;</string>
+    <string name="setting_symbol_left">&#060;</string>
+    <string name="setting_symbol_right">&#062;</string>
+    <string name="setting_logout">注销</string>
+
+
+    <string name="setting_network">网络</string>
+    <string name="setting_rooms">房间</string>
+    <string name="setting_devices">设备</string>
+    <string name="setting_scene">场景</string>
+    <string name="setting_automation">自动化</string>
+    <string name="setting_users">用户权限</string>
+    <string name="setting_gateway">固件更新</string>
+    <string name="setting_ezviz">萤石云</string>
+
+    <!--rpc 提示信息-->
+    <string name="message_rpc_2_15">系统错误</string>
+    <string name="message_rpc_102">用户已存在[code:102]</string>
+    <string name="message_rpc_103">用户不存在[code:103]</string>
+    <string name="message_rpc_104">密码错误[code:104]</string>
+    <string name="message_rpc_105">用户名或密码错误[code:105]</string>
+    <string name="message_rpc_106">用户数量已达上限超限[code:106]</string>
+    <string name="message_rpc_107">安装人员在线[code:107]</string>
+    <string name="message_rpc_108">管理员在线[code:108]</string>
+    <string name="message_rpc_110">安装人员或者管理员正在配置系统[code:110]</string>
+    <string name="message_rpc_112">非法用户名[code:112]</string>
+    <string name="message_rpc_113">普通用户数量已达上限[code:113]</string>
+    <string name="message_rpc_114">当前用户已登录[code:114]</string>
+    <string name="message_rpc_1013">操作失败，日程状态未设置[code:1013]</string>
+    <string name="message_rpc_1601">设备不存在[code:1601]</string>
+    <string name="message_rpc_1602">请求超时[code:1602]</string>
+    <string name="message_rpc_1603">设备不可用[code:1603]</string>
+    <string name="message_rpc_1604">设备节点空间不足[code:1604]</string>
+    <string name="message_rpc_1605">ULTI ZigBee错误[code:1605]</string>
+    <string name="message_rpc_1606">网络正忙[code:1606]</string>
+    <string name="message_rpc_1607">ZB485设备ZigBee错误[code:1607]</string>
+    <string name="message_rpc_1608">ZB485设备485错误[code:1608]</string>
+    <string name="message_rpc_1609">ZB485设备配置错误[code:1609]</string>
+    <string name="message_rpc_1610">ZB485设备MCU错误[code:1610]</string>
+    <string name="message_rpc_1611">ZB485响应解析错误[code:1611]</string>
+    <string name="message_rpc_1612">地暖开关操作失败[code:1612]</string>
+    <string name="message_rpc_1613">地暖设置温度失败[code:1613]</string>
+    <string name="message_rpc_1614">空调控制失败[code:1614]</string>
+
+    <string name="message_rpc_disconnected">断开连接，请重新登录。</string>
+    <string name="message_rpc_connectFail">网关连接失败！</string>
+    <string name="message_rpc_manyClient">连接的手机应用程序过多，请稍后再试！</string>
+    <string name="message_rpc_passwordError">密码错误！</string>
+    <string name="message_rpc_whiteListChanged">由于信任名单变化被锁定。</string>
+    <string name="message_rpc_operationFailure">操作失败</string>
+    <string name="message_rpc_passwordChanged">密码已更改，请重新登录！</string>
+    <string name="message_rpc_serverBusy">系统繁忙，请稍后再试！</string>
+    <string name="message_rpc_gatewayError">网关错误！</string>
+    <string name="message_rpc_deviceBlocked">你被网关锁定，请检查信任名单。</string>
+    <string name="message_rpc_projectfileNotExist">网关未配置！</string>
+    <string name="message_rpc_scheduleEmpty">日程未在网关网页上配置！</string>
+    <string name="message_rpc_error_scheduler_parse">日程配置不正确，请重新配置。</string>
+    <string name="message_rpc_socNotReady">系统繁忙，请稍后再试！</string>
+    <string name="message_rpc_systemError">系统错误！</string>
+
+
+</resources>

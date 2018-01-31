@@ -1,0 +1,26 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">100dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <!--ToolBar相关-->
+    <dimen name="toolbar_title_text_size">23sp</dimen>
+    <dimen name="toolbar_button_width">28dp</dimen>
+    <dimen name="toolbar_button_height">28dp</dimen>
+
+    <!--Dialog高度/宽度-->
+    <dimen name="dialog_alert_error_width">200dp</dimen>
+    <dimen name="dialog_alert_error_height">150dp</dimen>
+    <dimen name="dialog_confirm_change_password_width">250dp</dimen>
+    <dimen name="dialog_confirm_change_password_height">200dp</dimen>
+
+    <!--菜单主页Item-->
+    <dimen name="item_setting_button_padding">0dp</dimen>
+    <dimen name="item_setting_button_height">30dp</dimen>
+    <dimen name="item_setting_button_text_size">20sp</dimen>
+
+</resources>
