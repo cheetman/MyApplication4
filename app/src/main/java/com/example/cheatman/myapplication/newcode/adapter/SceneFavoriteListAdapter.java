@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.cheatman.myapplication.R;
+import com.example.cheatman.myapplication.newcode.model.AutomationInfo;
 import com.example.cheatman.myapplication.newcode.model.SceneInfo;
 
 import java.util.List;
@@ -51,20 +53,29 @@ public class SceneFavoriteListAdapter extends RecyclerView.Adapter<SceneFavorite
             SceneInfo item =  items.get(position);
             holder.tv_item_scene_name.setText(item.getName());
 
-            // 如果设置了回调，则设置点击事件
-            if (mOnItemClickListener != null)
-            {
-                holder.itemView.setOnClickListener(new View.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View v)
-                    {
+            holder.iv_item_favorite_icon.setOnCheckedChangeListener(null);
+            holder.iv_item_favorite_icon.setChecked(item.isFavorite());
 
-                        int position = holder.getLayoutPosition();
-                        mOnItemClickListener.onItemClick(holder.itemView,items.get(position), position);
-                    }
-                });
-            }
+            holder.itemView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    int position = holder.getLayoutPosition();
+                    if(mOnItemListener != null)
+                        mOnItemListener.onItemClick(holder.itemView,items.get(position), position);
+                }
+            });
+            holder.iv_item_favorite_icon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    int position = holder.getLayoutPosition();
+                    SceneInfo info = items.get(position);
+                    info.setFavorite(b);
+                    if(mOnItemListener != null)
+                        mOnItemListener.onToggleButtonCheckedChange(holder.itemView,info, position,b);
+                }
+            });
         }
 
 
@@ -76,18 +87,18 @@ public class SceneFavoriteListAdapter extends RecyclerView.Adapter<SceneFavorite
 
 
         //利用回调实现单击事件
-        public interface OnItemClickListener
+        public interface OnItemListener
         {
             void onItemClick(View view, SceneInfo info, int position);
+            void onToggleButtonCheckedChange(View view, SceneInfo info, int position, boolean b);
         }
 
-        private OnItemClickListener mOnItemClickListener;
+            private OnItemListener mOnItemListener;
 
-        public void setOnItemClickListener(OnItemClickListener mOnItemClickListener)
-        {
-            this.mOnItemClickListener = mOnItemClickListener;
-        }
-
+            public void setOnItemClickListener(OnItemListener mOnItemClickListener)
+            {
+                this.mOnItemListener = mOnItemClickListener;
+            }
 
 
 

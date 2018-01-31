@@ -67,7 +67,6 @@ public class DeviceDetail2Adapter extends RecyclerView.Adapter<RecyclerView.View
 
         @Override
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-            onBindFlag = true;
             Log.d("测试", "onBindViewHolder:" + String.valueOf(position) );
             if(holder instanceof ItemViewHolder) {
                 final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
@@ -145,12 +144,13 @@ public class DeviceDetail2Adapter extends RecyclerView.Adapter<RecyclerView.View
                         final TitleInfo item = (TitleInfo) items.get(position);
                         titleViewHolder.tv_item_title.setText(item.getName());
                         //Log.d("测试", String.valueOf(item2.isExpanded) );
+                        titleViewHolder.tb_item_title_button.setOnCheckedChangeListener(null);
                         titleViewHolder.tb_item_title_button.setChecked(!item.isExpanded());
                         titleViewHolder.tb_item_title_button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                                if (onBindFlag == false && mOnTitleItemCheckedChangeListener != null) {
+                                if (mOnTitleItemCheckedChangeListener != null) {
                                     mOnTitleItemCheckedChangeListener.mOnTitleItemCheckedChangeListener(buttonView, item, isChecked);
                                 }
                             }
@@ -167,9 +167,6 @@ public class DeviceDetail2Adapter extends RecyclerView.Adapter<RecyclerView.View
                             detailViewHolder.setVisibility(false);
                         }
                     }
-
-
-            onBindFlag = false;
         }
 
         @Override

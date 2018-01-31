@@ -1,7 +1,11 @@
 package com.example.cheatman.myapplication.newcode.model;
 
 
+import com.example.cheatman.myapplication.newcode.database.AppDatabase;
+import com.example.cheatman.myapplication.newcode.database.entity.FavoriteAutomationEntity;
+import com.example.cheatman.myapplication.newcode.database.entity.FavoriteSceneEntity;
 import com.example.cheatman.myapplication.newcode.utils.BeanUtils;
+import com.example.cheatman.myapplication.newcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -176,6 +180,7 @@ public class MyProjectInfo {
             testInitDeviceAndRoom();
             testInitScene();
             testInitAutomation();
+            testInitFavorite();
         }
     }
 
@@ -375,6 +380,35 @@ public class MyProjectInfo {
                 if(index >= sceneList.size()) break;
                 item.getSceneList().add(sceneList.get(index));
                 index ++ ;
+            }
+        }
+
+
+    }
+
+
+    /**
+     *  初始化Favorite
+     */
+    private void testInitFavorite(){
+
+        String userName = "Admin";
+        AppDatabase db = AppDatabase.getDatabase(Utils.getApp());
+        for(FavoriteSceneEntity fItem : db.favoriteSceneDao().queryByUser(userName)){
+            for(SceneInfo item : sceneList){
+                if(item.getName().equals(fItem.getSceneName())){
+                    item.setFavorite(true);
+                    break;
+                }
+            }
+        }
+
+        for(FavoriteAutomationEntity fItem : db.favoriteAutomationDao().queryByUser(userName)){
+            for(AutomationInfo item : automationList){
+                if(item.getName().equals(fItem.getAutomationName())){
+                    item.setFavorite(true);
+                    break;
+                }
             }
         }
 

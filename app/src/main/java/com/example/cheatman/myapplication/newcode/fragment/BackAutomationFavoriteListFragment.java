@@ -10,9 +10,14 @@ import com.example.cheatman.myapplication.R;
 import com.example.cheatman.myapplication.newcode.BaseFragment;
 import com.example.cheatman.myapplication.newcode.adapter.AutomationFavoriteListAdapter;
 import com.example.cheatman.myapplication.newcode.adapter.SceneFavoriteListAdapter;
+import com.example.cheatman.myapplication.newcode.database.AppDatabase;
+import com.example.cheatman.myapplication.newcode.database.dao.FavoriteAutomationDao;
+import com.example.cheatman.myapplication.newcode.database.entity.FavoriteAutomationEntity;
+import com.example.cheatman.myapplication.newcode.database.entity.FavoriteSceneEntity;
 import com.example.cheatman.myapplication.newcode.model.AutomationInfo;
 import com.example.cheatman.myapplication.newcode.model.MyProjectInfo;
 import com.example.cheatman.myapplication.newcode.model.SceneInfo;
+import com.example.cheatman.myapplication.newcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +53,26 @@ public class BackAutomationFavoriteListFragment extends BaseFragment {
         mAutomationFavoriteListAdapter = new AutomationFavoriteListAdapter(mActivity,mAutomationList);
         mRvAutomation.setAdapter(mAutomationFavoriteListAdapter);
 
-        mAutomationFavoriteListAdapter.setOnItemClickListener(new AutomationFavoriteListAdapter.OnItemClickListener() {
+        mAutomationFavoriteListAdapter.setOnItemClickListener(new AutomationFavoriteListAdapter.OnItemListener() {
             @Override
             public void onItemClick(View view, AutomationInfo info, int position) {
                 BackAutomationItemShowFragment fragment = BackAutomationItemShowFragment.newInstance(info.getName());
                 ((BackActivity)mActivity).addFragment(fragment);
+            }
+
+            @Override
+            public void onToggleButtonCheckedChange(View view, AutomationInfo info, int position, boolean b) {
+                String userName = "Admin";
+                AppDatabase db = AppDatabase.getDatabase(Utils.getApp());
+                FavoriteAutomationDao dao = db.favoriteAutomationDao();
+                FavoriteAutomationEntity entity = dao.queryFirstByUser(userName, info.getName());
+                if(b){
+                    if(entity == null)
+                        dao.insert(new FavoriteAutomationEntity("1",info.getName(),userName));
+                }else{
+                    if(entity != null)
+                        dao.delete(entity);
+                }
             }
         });
 

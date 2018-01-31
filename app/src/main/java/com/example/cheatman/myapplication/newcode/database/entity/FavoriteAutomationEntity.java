@@ -18,6 +18,12 @@ public class FavoriteAutomationEntity {
     private String userName;
     private String ip;
 
+    public FavoriteAutomationEntity(String automationId, String automationName, String userName) {
+        this.automationId = automationId;
+        this.automationName = automationName;
+        this.userName = userName;
+    }
+
     public long getId() {
         return id;
     }

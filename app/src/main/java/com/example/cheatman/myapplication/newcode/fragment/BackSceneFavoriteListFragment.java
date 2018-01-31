@@ -9,8 +9,14 @@ import com.example.cheatman.myapplication.BackActivity;
 import com.example.cheatman.myapplication.R;
 import com.example.cheatman.myapplication.newcode.BaseFragment;
 import com.example.cheatman.myapplication.newcode.adapter.SceneFavoriteListAdapter;
+import com.example.cheatman.myapplication.newcode.database.AppDatabase;
+import com.example.cheatman.myapplication.newcode.database.dao.FavoriteAutomationDao;
+import com.example.cheatman.myapplication.newcode.database.dao.FavoriteSceneDao;
+import com.example.cheatman.myapplication.newcode.database.entity.FavoriteAutomationEntity;
+import com.example.cheatman.myapplication.newcode.database.entity.FavoriteSceneEntity;
 import com.example.cheatman.myapplication.newcode.model.MyProjectInfo;
 import com.example.cheatman.myapplication.newcode.model.SceneInfo;
+import com.example.cheatman.myapplication.newcode.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +53,26 @@ public class BackSceneFavoriteListFragment extends BaseFragment {
         mRvScene.setAdapter(mSceneFavoriteListAdapter);
 
 
-        mSceneFavoriteListAdapter.setOnItemClickListener(new SceneFavoriteListAdapter.OnItemClickListener() {
+        mSceneFavoriteListAdapter.setOnItemClickListener(new SceneFavoriteListAdapter.OnItemListener() {
             @Override
             public void onItemClick(View view, SceneInfo info, int position) {
                 BackSceneItemShowFragment fragment = BackSceneItemShowFragment.newInstance(info.getName());
                 ((BackActivity)mActivity).addFragment(fragment);
+            }
+
+            @Override
+            public void onToggleButtonCheckedChange(View view, SceneInfo info, int position, boolean b) {
+                String userName = "Admin";
+                AppDatabase db = AppDatabase.getDatabase(Utils.getApp());
+                FavoriteSceneDao dao = db.favoriteSceneDao();
+                FavoriteSceneEntity entity = dao.queryFirstByUser(userName, info.getName());
+                if(b){
+                    if(entity == null)
+                        dao.insert(new FavoriteSceneEntity("1",info.getName(),userName));
+                }else{
+                    if(entity != null)
+                        dao.delete(entity);
+                }
             }
         });
 

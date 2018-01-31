@@ -24,6 +24,12 @@ public interface FavoriteAutomationDao {
     @Query("SELECT * FROM FavoriteAutomation WHERE id IN (:ids)")
     List<FavoriteAutomationEntity> getAllByIds(long[] ids);
 
+    @Query("SELECT * FROM FavoriteAutomation WHERE userName = :userName")
+    List<FavoriteAutomationEntity> queryByUser(String userName);
+
+    @Query("SELECT * FROM FavoriteAutomation WHERE userName = :userName AND automationName = :automationName LIMIT 0,1")
+    FavoriteAutomationEntity queryFirstByUser(String userName,String automationName);
+
     @Insert
     void insert(FavoriteAutomationEntity... entities);
 

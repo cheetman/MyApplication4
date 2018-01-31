@@ -41,9 +41,9 @@ public class MainApplication extends Application {
     public void setLoginUser(HistoryUserDao loginUser) {
         Gson gson = new Gson();
         String jsonValue = gson.toJson(loginUser);
-        SharedPreferences.Editor sharedata  = getSharedPreferences("loginUser", 0).edit();
-        sharedata.putString("value",jsonValue);
-        sharedata.commit();
+        SharedPreferences.Editor shareData  = getSharedPreferences("loginUser", 0).edit();
+        shareData.putString("value",jsonValue);
+        shareData.commit();
     }
 
     /**

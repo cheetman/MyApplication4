@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -51,20 +52,31 @@ public class AutomationFavoriteListAdapter extends RecyclerView.Adapter<Automati
             AutomationInfo item =  items.get(position);
             holder.tv_item_automation_name.setText(item.getName());
 
-            // 如果设置了回调，则设置点击事件
-            if (mOnItemClickListener != null)
-            {
-                holder.itemView.setOnClickListener(new View.OnClickListener()
+            holder.iv_item_favorite_icon.setOnCheckedChangeListener(null);
+            holder.iv_item_favorite_icon.setChecked(item.isFavorite());
+
+
+            holder.itemView.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
                     {
 
                         int position = holder.getLayoutPosition();
-                        mOnItemClickListener.onItemClick(holder.itemView,items.get(position), position);
+                        if(mOnItemListener != null)
+                        mOnItemListener.onItemClick(holder.itemView,items.get(position), position);
                     }
                 });
-            }
+                holder.iv_item_favorite_icon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        int position = holder.getLayoutPosition();
+                        AutomationInfo info = items.get(position);
+                        info.setFavorite(b);
+                        if(mOnItemListener != null)
+                        mOnItemListener.onToggleButtonCheckedChange(holder.itemView,info, position,b);
+                    }
+                });
         }
 
 
@@ -76,16 +88,17 @@ public class AutomationFavoriteListAdapter extends RecyclerView.Adapter<Automati
 
 
         //利用回调实现单击事件
-        public interface OnItemClickListener
+        public interface OnItemListener
         {
             void onItemClick(View view, AutomationInfo info, int position);
+            void onToggleButtonCheckedChange(View view, AutomationInfo info, int position, boolean b);
         }
 
-        private OnItemClickListener mOnItemClickListener;
+        private OnItemListener mOnItemListener;
 
-        public void setOnItemClickListener(OnItemClickListener mOnItemClickListener)
+        public void setOnItemClickListener(OnItemListener mOnItemClickListener)
         {
-            this.mOnItemClickListener = mOnItemClickListener;
+            this.mOnItemListener = mOnItemClickListener;
         }
 
 

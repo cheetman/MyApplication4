@@ -24,6 +24,12 @@ public interface FavoriteSceneDao {
     @Query("SELECT * FROM FavoriteScene WHERE id IN (:ids)")
     List<FavoriteSceneEntity> getAllByIds(long[] ids);
 
+    @Query("SELECT * FROM FavoriteScene WHERE userName = :userName")
+    List<FavoriteSceneEntity> queryByUser(String userName);
+
+    @Query("SELECT * FROM FavoriteScene WHERE userName = :userName AND sceneName = :sceneName LIMIT 0,1")
+    FavoriteSceneEntity queryFirstByUser(String userName,String sceneName);
+
     @Insert
     void insert(FavoriteSceneEntity... entities);
 

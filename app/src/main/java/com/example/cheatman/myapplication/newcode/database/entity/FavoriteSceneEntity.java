@@ -18,6 +18,11 @@ public class FavoriteSceneEntity {
     private String userName;
     private String ip;
 
+    public FavoriteSceneEntity(String sceneId, String sceneName, String userName) {
+        this.sceneId = sceneId;
+        this.sceneName = sceneName;
+        this.userName = userName;
+    }
 
     public long getId() {
         return id;
