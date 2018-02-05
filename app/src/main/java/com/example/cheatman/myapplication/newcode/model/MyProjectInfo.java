@@ -4,6 +4,7 @@ package com.example.cheatman.myapplication.newcode.model;
 import com.example.cheatman.myapplication.newcode.database.AppDatabase;
 import com.example.cheatman.myapplication.newcode.database.entity.FavoriteAutomationEntity;
 import com.example.cheatman.myapplication.newcode.database.entity.FavoriteSceneEntity;
+import com.example.cheatman.myapplication.newcode.socket.TcpServer;
 import com.example.cheatman.myapplication.newcode.utils.BeanUtils;
 import com.example.cheatman.myapplication.newcode.utils.Utils;
 
@@ -181,6 +182,10 @@ public class MyProjectInfo {
             testInitScene();
             testInitAutomation();
             testInitFavorite();
+
+            // 测试服务器
+            //TcpServer tcp=new TcpServer();
+            //tcp.getServer();
         }
     }
 

@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyApplication4.iml" filepath="$PROJECT_DIR$/MyApplication4.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mcc/mcc.iml" filepath="$PROJECT_DIR$/mcc/mcc.iml" />
       <module fileurl="file://$PROJECT_DIR$/myokhttp/myokhttp.iml" filepath="$PROJECT_DIR$/myokhttp/myokhttp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/utilcode/utilcode.iml" filepath="$PROJECT_DIR$/utilcode/utilcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysocket/mysocket.iml" filepath="$PROJECT_DIR$/mysocket/mysocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/socket/socket.iml" filepath="$PROJECT_DIR$/socket/socket.iml" />
     </modules>
   </component>
 </project>

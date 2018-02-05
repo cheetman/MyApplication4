@@ -1,7 +1,6 @@
 package com.example.cheatman.myapplication;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -10,20 +9,30 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.cheatman.myapplication.newcode.MainBaseActivity;
 import com.example.cheatman.myapplication.newcode.adapter.HomeFragmentPageAdapter;
-import com.example.cheatman.myapplication.newcode.application.MainApplication;
 import com.example.cheatman.myapplication.newcode.constant.ProjectConstants;
-import com.example.cheatman.myapplication.newcode.control.CustomDialog;
 import com.example.cheatman.myapplication.newcode.fragment.MainAutomationFragment;
 import com.example.cheatman.myapplication.newcode.fragment.MainHomeFragment;
 import com.example.cheatman.myapplication.newcode.fragment.MainSceneFragment;
 import com.example.cheatman.myapplication.newcode.fragment.MainScheduleFragment;
 import com.example.cheatman.myapplication.newcode.fragment.SettingMainFragment;
-import com.example.cheatman.myapplication.newcode.utils.ImageUtils;
+import com.xuhao.android.libsocket.sdk.ConnectionInfo;
+import com.xuhao.android.libsocket.sdk.OkSocket;
+import com.xuhao.android.libsocket.sdk.OkSocketOptions;
+import com.xuhao.android.libsocket.sdk.SocketActionAdapter;
+import com.xuhao.android.libsocket.sdk.bean.ISendable;
+import com.xuhao.android.libsocket.sdk.bean.OriginalData;
+import com.xuhao.android.libsocket.sdk.connection.IConnectionManager;
+import com.xuhao.android.libsocket.sdk.protocol.IHeaderProtocol;
+
+import java.nio.ByteOrder;
 
 import butterknife.BindView;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 
 // 记录： 1 翻转/回收后activity重建，dialog消失后未重建。
@@ -76,6 +85,7 @@ public class MainActivityV extends MainBaseActivity {
     // Fragment：设置菜单-固件升级
     //private SettingGatewayFirmFragment mSettingGatewayFirmFragment;
 
+    IConnectionManager mManager = null;
 
 
     @Override
@@ -91,8 +101,65 @@ public class MainActivityV extends MainBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //连接参数设置(IP,端口号),这也是一个连接的唯一标识,不同连接,该参数中的两个值至少有其一不一样
+        ConnectionInfo info = new ConnectionInfo("192.168.40.109", 8080);
+        //调用OkSocket,开启这次连接的通道,拿到通道Manager
+        mManager = OkSocket.open(info);
+        //注册Socket行为监听器,SocketActionAdapter是回调的Simple类,其他回调方法请参阅类文档
+        mManager.registerReceiver(new SocketActionAdapter() {
+            @Override
+            public void onSocketConnectionSuccess(Context context, ConnectionInfo info, String action) {
+                Toast.makeText(context, "连接成功", LENGTH_SHORT).show();
+                //此处也可将ConnectManager保存成成员变量使用.
+                if(mManager != null){
+                    mManager.send(new TestSendData());
+                }
+                //以上两种方法选择其一,成员变量的方式请注意判空
+
+            }
+
+            @Override
+            public void onSocketReadResponse(Context context, ConnectionInfo info, String action, OriginalData data) {
+                super.onSocketReadResponse(context, info, action, data);
+            }
+
+            @Override
+            public void onSocketWriteResponse(Context context, ConnectionInfo info, String action, ISendable data) {
+                super.onSocketWriteResponse(context, info, action, data);
+            }
+        });
+
+
+
+//设置自定义解析头
+        OkSocketOptions.Builder okOptionsBuilder = new OkSocketOptions.Builder(mManager.getOption());
+        okOptionsBuilder.setHeaderProtocol(new IHeaderProtocol() {
+            @Override
+            public int getHeaderLength() {
+                //返回自定义的包头长度,框架会解析该长度的包头
+                return 0;
+            }
+
+            @Override
+            public int getBodyLength(byte[] header, ByteOrder byteOrder) {
+                //从header(包头数据)中解析出包体的长度,byteOrder是你在参配中配置的字节序,可以使用ByteBuffer比较方便解析
+                return 0;
+            }
+        });
+//将新的修改后的参配设置给连接管理器
+        mManager.option(okOptionsBuilder.build());
+
+        //调用通道进行连接
+        mManager.connect();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {

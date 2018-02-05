@@ -12,6 +12,7 @@ import com.example.cheatman.myapplication.newcode.database.AppDatabase;
 import com.example.cheatman.myapplication.newcode.database.dao.HistoryUserDao;
 import com.example.cheatman.myapplication.newcode.utils.Utils;
 import com.google.gson.Gson;
+import com.xuhao.android.libsocket.sdk.OkSocket;
 
 /**
  * Created by Cheatman on 2018/1/24.
@@ -31,7 +32,8 @@ public class MainApplication extends Application {
         crashHandler.init(context);
         // 初始化Utils
         Utils.init(this);
-
+        //在主进程初始化一次,多进程时需要区分主进程.
+        OkSocket.initialize(this);
     }
 
     /**

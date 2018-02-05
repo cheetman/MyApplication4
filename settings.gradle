@@ -1,1 +1,1 @@
-include ':app', ':utilcode', ':myokhttp'
+include ':app', ':myokhttp', ':mcc', ':socket', ':mysocket'
