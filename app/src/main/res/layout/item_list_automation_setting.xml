@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/selector_touch_bg"
+    android:clickable="true"
+    android:focusable="true">
+
+<View
+    android:layout_width="15dp"
+    android:layout_height="match_parent"
+
+    ></View>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@drawable/menu_scheduler"/>
+
+        <TextView
+            android:id="@+id/tv_item_automation_name"
+            android:text="Light1Light1Light1Light1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/iv_item_right_icon"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:src="@drawable/ic_item_arrow_right_black"
+            android:tint="@color/darkgrey">
+        </ImageView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_item_device_line"
+        style="@style/h_line"
+        android:layout_height="1px"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+
+        ></View>
+
+</LinearLayout>
